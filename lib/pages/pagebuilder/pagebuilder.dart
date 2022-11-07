@@ -17,21 +17,42 @@ class _PageBuilderState extends State<PageBuilder> {
   @override
   Widget build(BuildContext context) {
     final PageController controller = PageController();
-    return PageView(
-      /// [PageView.scrollDirection] defaults to [Axis.horizontal].
-      /// Use [Axis.vertical] to scroll vertically.
-      controller: controller,
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        Center(child: HomePage()),
-        Center(child: OnBoardingPage()),
-        Center(child: OnBoardingPage3()),
-        Center(child: OnBoardingPage2()),
-        Center(child: FinalOnboarding()),
-      ],
-      physics: BouncingScrollPhysics(),
+    return Stack(children: [
+      PageView(
+        /// [PageView.scrollDirection] defaults to [Axis.horizontal].
+        /// Use [Axis.vertical] to scroll vertically.
+        controller: controller,
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Center(child: HomePage()),
+          Center(child: OnBoardingPage()),
+          Center(child: OnBoardingPage3()),
+          Center(child: OnBoardingPage2()),
+          Center(child: FinalOnboarding()),
+        ],
+        physics: BouncingScrollPhysics(),
 
-      //dot indicator
-    );
+        //dot indicator
+      ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Center(
+              child: SmoothPageIndicator(
+                controller: controller,
+                count: 5,
+                effect: WormEffect(radius: 8, activeDotColor: Colors.black),
+                onDotClicked: (index) => controller.animateToPage(index,
+                    duration: Duration(milliseconds: 500),
+                    curve: Curves.easeInCubic),
+              ),
+            ),
+          )
+        ],
+      )
+    ]);
   }
 }

@@ -46,7 +46,9 @@ class _HomePageState extends State<HomePage> {
                       Color.fromRGBO(194, 152, 112, 100)
                     ],
                   ),
-                  Text("Alagbata Marketing App"),
+                  Text("Alagbata Marketing App",
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold, fontSize: 20)),
                   SizedBox(height: 40),
                   Text("Welcome",
                       style: GoogleFonts.poppins(

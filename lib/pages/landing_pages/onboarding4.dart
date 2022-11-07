@@ -33,7 +33,10 @@ class _OnBoardingPage3State extends State<OnBoardingPage3> {
                 children: [
                   Image.asset("assets/images/ama_logo.png", height: 120),
                   SizedBox(height: 70),
-                  SvgPicture.asset("assets/images/jj.svg"),
+                  SvgPicture.asset(
+                    "assets/images/sss.svg",
+                    height: 200,
+                  ),
                   SizedBox(height: 60),
                   Text("Get an extra free advert here on",
                       style: GoogleFonts.poppins(
