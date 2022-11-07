@@ -45,14 +45,12 @@ class _FinalOnboardingState extends State<FinalOnboarding> {
                     child: Center(
                       child: Text("Let\'s get you started",
                           style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.bold, fontSize: 20)),
+                              color: Color.fromRGBO(188, 142, 102, 50),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
                     ),
                   ),
                   SizedBox(height: 130),
-                  Text(
-                    "Skip >",
-                    style: TextStyle(color: Colors.white),
-                  )
                 ],
               ),
             )));

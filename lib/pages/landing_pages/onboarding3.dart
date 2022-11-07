@@ -35,13 +35,12 @@ class _OnBoardingPage2State extends State<OnBoardingPage2> {
                   SizedBox(height: 70),
                   SvgPicture.asset("assets/images/cc.svg"),
                   SizedBox(height: 60),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                        "Receive relevant information adverts on areas of interest and get paid",
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 18)),
-                  ),
+                  Text("Receive relevant information adverts",
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold, fontSize: 18)),
+                  Text("on areas of interest and get paid",
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold, fontSize: 18)),
                   SizedBox(height: 130),
                   Text(
                     "Skip >",
