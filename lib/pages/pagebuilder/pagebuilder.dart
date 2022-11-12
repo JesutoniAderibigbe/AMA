@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ama/pages/landing_pages/final_onboarding.dart';
 import 'package:ama/pages/landing_pages/onboarding1.dart';
 import 'package:ama/pages/landing_pages/onboarding2.dart';
@@ -14,9 +16,39 @@ class PageBuilder extends StatefulWidget {
 }
 
 class _PageBuilderState extends State<PageBuilder> {
+  int _currentPage = 0;
+  late Timer _timer;
+
+  final PageController controller = PageController(initialPage: 0);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
+      if (_currentPage < 4) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+
+      controller.animateToPage(
+        _currentPage,
+        duration: Duration(milliseconds: 350),
+        curve: Curves.decelerate,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController();
     return Stack(children: [
       PageView(
         /// [PageView.scrollDirection] defaults to [Axis.horizontal].
