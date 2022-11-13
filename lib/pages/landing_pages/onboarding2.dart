@@ -36,7 +36,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 child: Column(
                   children: [
                     Image.asset("assets/images/ama_logo.png", height: 120),
-                    SizedBox(height: 70),
+                    SizedBox(height: 50),
                     SvgPicture.asset(
                       "assets/images/mm.svg",
                     ),
@@ -54,7 +54,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     Text("as an SMS,Emails or WhatsApp DM)",
                         style: TextStyle(
                             color: Color.fromRGBO(170, 111, 69, 100))),
-                    SizedBox(height: 130),
+                    SizedBox(height: 30),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,

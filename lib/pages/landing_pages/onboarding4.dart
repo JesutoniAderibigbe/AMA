@@ -21,7 +21,7 @@ class _OnBoardingPage3State extends State<OnBoardingPage3> {
                 Color.fromRGBO(243, 235, 185, 50),
               ],
               begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
+              end: Alignment.center,
               stops: [0.1, 0.6]),
         ),
         child: Scaffold(
@@ -36,16 +36,15 @@ class _OnBoardingPage3State extends State<OnBoardingPage3> {
                     Image.asset("assets/images/ama_logo.png", height: 120),
                     SizedBox(height: 70),
                     SvgPicture.asset(
-                      "assets/images/sss.svg",
-                      height: 200,
+                      "assets/images/new.svg",
                     ),
                     SizedBox(height: 60),
                     Text("Get an extra free advert here on",
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
+                            fontWeight: FontWeight.bold, fontSize: 18)),
                     Text("the AMA App upon each Ad you run",
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
+                            fontWeight: FontWeight.bold, fontSize: 18)),
                     SizedBox(height: 130),
                     GestureDetector(
                       onTap: () {

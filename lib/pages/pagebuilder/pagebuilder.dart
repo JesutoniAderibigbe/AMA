@@ -82,9 +82,9 @@ class _PageBuilderState extends State<PageBuilder> {
                     curve: Curves.easeInCubic),
               ),
             ),
-          )
+          ),
         ],
-      )
+      ),
     ]);
   }
 }
