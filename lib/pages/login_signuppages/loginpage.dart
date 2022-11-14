@@ -11,14 +11,22 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool isChecked = false;
+  var _passwordVisible = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _passwordVisible = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(170, 111, 69, 30),
-                Color.fromRGBO(243, 235, 185, 50),
+                Color.fromRGBO(170, 111, 69, 1),
+                Color.fromRGBO(243, 235, 185, 1),
               ],
               begin: Alignment.bottomLeft,
               end: Alignment.center,
@@ -52,16 +60,38 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.all(20.0),
                     child: TextFormField(
                       decoration: InputDecoration(
-                        hintText: "Enter Email",
-                      ),
+                          labelText: "Enter Email",
+                          labelStyle: GoogleFonts.poppins(color: Colors.black),
+                          hintText: "abc@gmail.com",
+                          suffixIcon: Icon(Icons.email),
+                          suffixIconColor: Colors.black),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: TextFormField(
+                      cursorColor: Colors.black,
+                      showCursor: true,
+                      mouseCursor: MouseCursor.defer,
+                      obscureText: !_passwordVisible,
                       decoration: InputDecoration(
-                        hintText: "Password",
-                      ),
+                          hintText: "At least 6 characters",
+                          labelText: "Password",
+                          labelStyle: GoogleFonts.poppins(color: Colors.black),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                                // Based on passwordVisible state choose the icon
+                                _passwordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Colors.black),
+                            onPressed: () {
+                              // Update the state i.e. toogle the state of passwordVisible variable
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                          )),
                     ),
                   ),
 

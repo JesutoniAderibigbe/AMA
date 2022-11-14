@@ -29,8 +29,10 @@ class _PageBuilderState extends State<PageBuilder> {
     _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
       if (_currentPage < 4) {
         _currentPage++;
-      } else {
-        _currentPage = 0;
+      } else if (_currentPage == 4) {
+        _currentPage = 4;
+      } else if (_currentPage < 3) {
+        _currentPage++;
       }
 
       controller.animateToPage(
@@ -44,7 +46,7 @@ class _PageBuilderState extends State<PageBuilder> {
   @override
   void dispose() {
     super.dispose();
-    _timer?.cancel();
+    _timer.cancel();
   }
 
   @override

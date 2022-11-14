@@ -16,55 +16,75 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromRGBO(170, 111, 69, 30),
-              Color.fromRGBO(243, 235, 185, 50),
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.center,
-            // stops: [0.6, 0.6]
-          ),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(255, 255, 255, 1),
+            Color.fromRGBO(194, 152, 112, 1),
+          ],
+          // begin: Alignment.center,
+          // end: Alignment.centerRight,
+          // stops: [0.1, 0.1]
         ),
-        child: Scaffold(
-            extendBody: true,
-            extendBodyBehindAppBar: true,
-            backgroundColor: Colors.transparent,
-            body: Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-
-                  /// crossAxisAlignment: CrossAxisAlignment.center,
+      ),
+      child: Scaffold(
+          extendBody: true,
+          extendBodyBehindAppBar: true,
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: Column(
+              children: [
+                SizedBox(height: 40),
+                Stack(
+                  alignment: Alignment.bottomCenter,
                   children: [
                     Image.asset("assets/images/ama_logo.png"),
-                    Text("AMA",
+                    Text(
+                      "AMA",
+                      style: GoogleFonts.poppins(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(117, 81, 50, 1)),
+                    ),
+                    Text("Marketing App",
                         style: GoogleFonts.poppins(
-                            // fontWeight: FontWeight.bold,
-                            fontSize: 40.0)),
-                    // GradientText(
-                    //   'AMA',
-                    //   style: TextStyle(
-                    //       fontSize: 40.0, fontWeight: FontWeight.bold),
-                    //   colors: [
-                    //     Color.fromRGBO(255, 255, 255, 100),
-                    //     Color.fromRGBO(194, 152, 112, 100)
-                    //   ],
-                    // ),
-
-                    Text("Alagbata Marketing App",
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
-                    SizedBox(height: 40),
-                    Text("Welcome",
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 30)),
-                    Text("Let\'s AMA",
-                        style: GoogleFonts.poppins(fontSize: 20)),
+                            color: Color.fromRGBO(117, 81, 50, 1),
+                            fontSize: 15))
                   ],
                 ),
-              ),
-            )));
+                SizedBox(height: 120),
+                Text("Welcome",
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                        color: Color.fromRGBO(170, 111, 69, 1),
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold)),
+                SizedBox(height: 30),
+                Text("Let\'s AMA",
+                    textAlign: TextAlign.center,
+                    textWidthBasis: TextWidthBasis.parent,
+                    style: GoogleFonts.poppins(
+                      letterSpacing: 10,
+                      color: Color.fromRGBO(117, 81, 50, 1),
+                      fontSize: 20,
+                    )),
+                SizedBox(height: 200),
+                RichText(
+                    text: TextSpan(
+                        text: "Powered by",
+                        style: GoogleFonts.poppins(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12),
+                        children: [
+                      TextSpan(
+                        text: " Alagabata.ng",
+                        style: GoogleFonts.poppins(fontSize: 12),
+                      )
+                    ])),
+              ],
+            ),
+          )),
+    );
   }
 }

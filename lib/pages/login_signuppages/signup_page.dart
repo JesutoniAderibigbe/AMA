@@ -11,6 +11,16 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  var _passwordVisible = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _passwordVisible = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -23,8 +33,8 @@ class _SignUpPageState extends State<SignUpPage> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(170, 111, 69, 30),
-                  Color.fromRGBO(243, 235, 185, 50),
+                  Color.fromRGBO(170, 111, 69, 1),
+                  Color.fromRGBO(243, 235, 185, 1),
                 ],
                 begin: Alignment.bottomLeft,
                 end: Alignment.center,
@@ -58,7 +68,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: const EdgeInsets.all(20.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                            hintText: "Enter Email",
+                            labelText: "Enter Email",
+                            labelStyle:
+                                GoogleFonts.poppins(color: Colors.black),
+                            hintText: "abc@gmail.com",
+                            suffixIcon: Icon(Icons.email),
+                            suffixIconColor: Colors.black,
                             focusedBorder:
                                 OutlineInputBorder(borderSide: BorderSide())),
                       ),
@@ -67,7 +82,24 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: const EdgeInsets.all(20.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                            hintText: "Password",
+                            hintText: "At least 6 characters",
+                            labelText: "Password",
+                            labelStyle:
+                                GoogleFonts.poppins(color: Colors.black),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                  // Based on passwordVisible state choose the icon
+                                  _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.black),
+                              onPressed: () {
+                                // Update the state i.e. toogle the state of passwordVisible variable
+                                setState(() {
+                                  _passwordVisible = !_passwordVisible;
+                                });
+                              },
+                            ),
                             focusedBorder:
                                 OutlineInputBorder(borderSide: BorderSide())),
                       ),
@@ -76,7 +108,23 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: const EdgeInsets.all(20.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                            hintText: " Confirm Password",
+                            labelText: "Confirm Password",
+                            labelStyle:
+                                GoogleFonts.poppins(color: Colors.black),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                  // Based on passwordVisible state choose the icon
+                                  _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.black),
+                              onPressed: () {
+                                // Update the state i.e. toogle the state of passwordVisible variable
+                                setState(() {
+                                  _passwordVisible = !_passwordVisible;
+                                });
+                              },
+                            ),
                             focusedBorder:
                                 OutlineInputBorder(borderSide: BorderSide())),
                       ),

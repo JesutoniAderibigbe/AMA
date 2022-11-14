@@ -17,8 +17,8 @@ class _OnBoardingPage3State extends State<OnBoardingPage3> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(170, 111, 69, 30),
-                Color.fromRGBO(243, 235, 185, 50),
+                Color.fromRGBO(170, 111, 69, 1),
+                Color.fromRGBO(243, 235, 185, 1),
               ],
               begin: Alignment.bottomLeft,
               end: Alignment.center,

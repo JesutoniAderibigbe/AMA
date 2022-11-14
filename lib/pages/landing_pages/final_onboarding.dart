@@ -17,8 +17,8 @@ class _FinalOnboardingState extends State<FinalOnboarding> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(170, 111, 69, 30),
-                Color.fromRGBO(243, 235, 185, 50),
+                Color.fromRGBO(170, 111, 69, 1),
+                Color.fromRGBO(243, 235, 185, 1),
               ],
               begin: Alignment.bottomLeft,
               end: Alignment.center,
@@ -51,7 +51,7 @@ class _FinalOnboardingState extends State<FinalOnboarding> {
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.white),
                         child: Center(
-                          child: Text("Let\'s get you started",
+                          child: Text("Let\'s get started",
                               style: GoogleFonts.poppins(
                                   color: Color.fromRGBO(188, 142, 102, 50),
                                   fontWeight: FontWeight.bold,
