@@ -1,4 +1,6 @@
+import 'package:ama/pages/business_reception_pagr/personal_business_page.dart';
 import 'package:ama/pages/recipients_pages/advert_reception.dart';
+import 'package:ama/pages/recipients_pages/personal_reception.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,8 +18,8 @@ class _DashboardPageState extends State<DashboardPage> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(170, 111, 69, 30),
-                Color.fromRGBO(243, 235, 185, 50),
+                Color.fromRGBO(170, 111, 69, 1),
+                Color.fromRGBO(243, 235, 185, 1),
               ],
               begin: Alignment.bottomLeft,
               end: Alignment.center,
@@ -101,29 +103,38 @@ class _DashboardPageState extends State<DashboardPage> {
                                 ],
                               ));
                     },
-                    child: Center(
-                      child: Container(
-                        height: 50,
-                        width: 300,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(20.0),
-                            color: Colors.white),
-                        child: Column(
-                          children: [
-                            Center(
-                              child: Text("Business Account",
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => BusinessReceptionPage()));
+                      },
+                      child: Center(
+                        child: Container(
+                          height: 50,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(20.0),
+                              color: Colors.white),
+                          child: Column(
+                            children: [
+                              Center(
+                                child: Text("Business Account",
+                                    style: GoogleFonts.poppins(
+                                        color:
+                                            Color.fromRGBO(188, 142, 102, 50),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                              ),
+                              Text("To Run Ads",
                                   style: GoogleFonts.poppins(
-                                      color: Color.fromRGBO(188, 142, 102, 50),
+                                      color: Color.fromRGBO(97, 93, 93, 50),
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 20)),
-                            ),
-                            Text("To Run Ads",
-                                style: GoogleFonts.poppins(
-                                    color: Color.fromRGBO(97, 93, 93, 50),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12))
-                          ],
+                                      fontSize: 12))
+                            ],
+                          ),
                         ),
                       ),
                     ),

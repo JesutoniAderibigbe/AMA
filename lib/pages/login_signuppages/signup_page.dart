@@ -1,6 +1,7 @@
 import 'package:ama/pages/login_signuppages/email_verification.dart';
 import 'package:ama/pages/login_signuppages/loginpage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -134,10 +135,27 @@ class _SignUpPageState extends State<SignUpPage> {
                       onTap: () {
                         print(
                             "you are navigating to the verification account page!");
+
+                        Loader.show(context,
+                            isSafeAreaOverlay: false,
+                            progressIndicator: CircularProgressIndicator(
+                              color: Colors.black,
+                            ),
+                            isBottomBarOverlay: false,
+                            overlayFromBottom: 0,
+                            themeData: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.fromSwatch()
+                                    .copyWith(secondary: Colors.black38)),
+                            overlayColor: Color(0x99E8EAF6));
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (_) => VerificationPage()));
+
+                        Future.delayed(Duration(seconds: 10), () {
+                          Loader.hide();
+                        });
                       },
                       child: Center(
                         child: Container(

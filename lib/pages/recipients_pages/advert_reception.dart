@@ -1,8 +1,11 @@
 import 'dart:ui';
 
+import 'package:ama/pages/recipients_pages/personal_reception.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AdvertReceptionPage extends StatefulWidget {
@@ -62,18 +65,41 @@ class _AdvertReceptionPageState extends State<AdvertReceptionPage> {
                             onTap: () {
                               print("Navigate to the hive datavasee");
                               //Navigate to the Hive database
-                              showDialog(
-                                  context: context,
-                                  builder: (_) => AlertDialog(
-                                        content: Text(
-                                            "Contact Jesutoni for more info...This screen requires permission and authentication. Please wait for the updates",
-                                            style: GoogleFonts.poppins()),
-                                        actions: [
-                                          Center(
-                                              child: CircularProgressIndicator(
-                                                  color: Colors.red))
-                                        ],
-                                      ));
+
+                              Loader.show(context,
+                                  isAppbarOverlay: true,
+                                  overlayFromTop: 100,
+                                  progressIndicator: Center(
+                                      child: SpinKitPulse(
+                                    color: Color.fromRGBO(185, 136, 95, 10),
+                                    size: 70.0,
+                                  )),
+                                  themeData: Theme.of(context).copyWith(
+                                      colorScheme: ColorScheme.fromSwatch()
+                                          .copyWith(secondary: Colors.black38)),
+                                  overlayColor: Colors.grey);
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => PersonalReceptionPage()));
+
+                              Future.delayed(Duration(seconds: 10), () {
+                                Loader.hide();
+                              });
+
+                              // showDialog(
+                              //     context: context,
+                              //     builder: (_) => AlertDialog(
+                              //           content: Text(
+                              //               "Contact Jesutoni for more info...This screen requires permission and authentication. Please wait for the updates",
+                              //               style: GoogleFonts.poppins()),
+                              //           actions: [
+                              //             Center(
+                              //                 child: CircularProgressIndicator(
+                              //                     color: Colors.red))
+                              //           ],
+                              //         ));
                             },
                             child: Center(
                               child: Row(
@@ -427,7 +453,7 @@ class _AdvertReceptionPageState extends State<AdvertReceptionPage> {
                                                 GoogleFonts.titilliumWeb(
                                                     //      fontWeight: FontWeight.bold,
                                                     color: Colors.black),
-                                            hintText: "Olayinka Adejoro",
+                                            hintText: "Berry Omoh",
                                             border: OutlineInputBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(40))),

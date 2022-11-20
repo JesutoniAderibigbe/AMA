@@ -1,5 +1,7 @@
+import 'package:ama/pages/carousel_page/carousel_page.dart';
 import 'package:ama/pages/login_signuppages/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,6 +15,8 @@ class _LoginPageState extends State<LoginPage> {
   bool isChecked = false;
   var _passwordVisible = false;
 
+  TextEditingController email = TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -21,6 +25,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email.text);
+
     return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -59,6 +67,13 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: TextFormField(
+                      validator: (emailValid) {
+                        if (emailValid == true) {
+                          return "Good";
+                        }
+                      },
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: email,
                       decoration: InputDecoration(
                           labelText: "Enter Email",
                           labelStyle: GoogleFonts.poppins(color: Colors.black),
@@ -181,10 +196,27 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.white, fontSize: 14)),
                       GestureDetector(
                         onTap: () {
-                          print(
-                              "you are navigating to the create account page!");
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => SignUpPage()));
+                          Loader.show(context,
+                              isSafeAreaOverlay: false,
+                              progressIndicator: CircularProgressIndicator(
+                                color: Colors.black,
+                              ),
+                              isBottomBarOverlay: false,
+                              overlayFromBottom: 0,
+                              themeData: Theme.of(context).copyWith(
+                                  colorScheme: ColorScheme.fromSwatch()
+                                      .copyWith(secondary: Colors.black38)),
+                              overlayColor: Color(0x99E8EAF6));
+
+                          print("you are navigating to the Login Page");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => SplashScreen()));
+
+                          Future.delayed(Duration(milliseconds: 25000), () {
+                            Loader.hide();
+                          });
                         },
                         child: Text(" Create one",
                             style: GoogleFonts.poppins(
