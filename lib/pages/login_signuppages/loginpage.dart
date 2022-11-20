@@ -209,10 +209,8 @@ class _LoginPageState extends State<LoginPage> {
                               overlayColor: Color(0x99E8EAF6));
 
                           print("you are navigating to the Login Page");
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => SplashScreen()));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => SignUpPage()));
 
                           Future.delayed(Duration(milliseconds: 25000), () {
                             Loader.hide();
