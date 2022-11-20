@@ -16,7 +16,8 @@ class SplashScreen extends StatelessWidget {
       splash: SingleChildScrollView(
         child: Column(
           children: [
-            Lottie.asset('assets/images/cycle.json'),
+            Lottie.asset('assets/images/cycle.json',
+                height: 50, frameRate: FrameRate.max),
             Text(
               "Loading...",
               style: GoogleFonts.poppins(color: Colors.white, fontSize: 12),
