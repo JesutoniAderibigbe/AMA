@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ama/pages/business_reception_pagr/advert_placement.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -134,19 +135,27 @@ class _BusinessPageState extends State<BusinessPages> {
                         //     MaterialPageRoute(
                         //         builder: (_) => ClarificationPage()));
                       },
-                      child: Center(
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Save",
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10)),
-                            ),
-                            Icon(FeatherIcons.download, color: Colors.white)
-                          ],
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => AdvertPlacement()));
+                        },
+                        child: Center(
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text("Save",
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10)),
+                              ),
+                              Icon(FeatherIcons.download, color: Colors.white)
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -266,41 +275,15 @@ class _BusinessPageState extends State<BusinessPages> {
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 18),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipOval(
-                    child: (_image == null)
-                        ? SvgPicture.asset("assets/images/reg.svg", height: 80)
-                        : Image.file(
-                            _image!,
-                            fit: BoxFit.contain,
-                            height: 120,
-                          )),
-                IconButton(
-                  icon: Icon(FontAwesomeIcons.camera, size: 20.0),
-                  onPressed: () {
-                    _showImageDialog();
-                    //  getImage();
-                  },
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Business Validity Proof",
-                style: GoogleFonts.poppins(color: Colors.black, fontSize: 18),
-              ),
-            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Stack(alignment: Alignment.bottomRight, children: [
                   ClipOval(
                       child: (_image == null)
-                          ? SvgPicture.asset("assets/images/certifcate.svg",
-                              height: 120)
+                          ? Image.asset("assets/images/ama_logo.png",
+                              height: 140)
                           : Image.file(
                               _image!,
                               fit: BoxFit.contain,
@@ -318,6 +301,94 @@ class _BusinessPageState extends State<BusinessPages> {
                 ]),
               ],
             ),
+
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     ClipOval(
+            //         child: (_image == null)
+            //             ? SvgPicture.asset("assets/images/reg.svg", height: 80)
+            //             : Image.file(
+            //                 _image!,
+            //                 fit: BoxFit.contain,
+            //                 height: 120,
+            //               )),
+            //     IconButton(
+            //       icon: Icon(FontAwesomeIcons.camera, size: 20.0),
+            //       onPressed: () {
+            //         _showImageDialog();
+            //         //  getImage();
+            //       },
+            //     )
+            //   ],
+            // ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Business Validity Proof",
+                    style:
+                        GoogleFonts.poppins(color: Colors.black, fontSize: 18),
+                  ),
+                  Text(
+                      "(Picture of business, screenshot of website or media interactions, e.t.c)",
+                      style: GoogleFonts.titilliumWeb(fontSize: 12)),
+                ],
+              ),
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Stack(alignment: Alignment.bottomRight, children: [
+                  ClipOval(
+                      child: (_image == null)
+                          ? Image.asset("assets/images/ama_logo.png",
+                              height: 140)
+                          : Image.file(
+                              _image!,
+                              fit: BoxFit.contain,
+                              height: 120,
+                            )),
+                  Padding(
+                      padding: EdgeInsets.only(top: 60.0),
+                      child: IconButton(
+                        icon: Icon(FontAwesomeIcons.camera, size: 20.0),
+                        onPressed: () {
+                          _showImageDialog();
+                          //  getImage();
+                        },
+                      )),
+                ]),
+              ],
+            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     Stack(alignment: Alignment.bottomRight, children: [
+            //       ClipOval(
+            //           child: (_image == null)
+            //               ? SvgPicture.asset("assets/images/certifcate.svg",
+            //                   height: 120)
+            //               : Image.file(
+            //                   _image!,
+            //                   fit: BoxFit.contain,
+            //                   height: 120,
+            //                 )),
+            //       Padding(
+            //           padding: EdgeInsets.only(top: 60.0),
+            //           child: IconButton(
+            //             icon: Icon(FontAwesomeIcons.camera, size: 20.0),
+            //             onPressed: () {
+            //               _showImageDialog();
+            //               //  getImage();
+            //             },
+            //           )),
+            //     ]),
+            //   ],
+            // ),
           ],
         ),
       ),

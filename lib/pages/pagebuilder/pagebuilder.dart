@@ -26,7 +26,7 @@ class _PageBuilderState extends State<PageBuilder> {
     // TODO: implement initState
     super.initState();
 
-    _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
+    _timer = Timer.periodic(Duration(seconds: 6), (Timer timer) {
       if (_currentPage < 4) {
         _currentPage++;
       } else if (_currentPage == 4) {

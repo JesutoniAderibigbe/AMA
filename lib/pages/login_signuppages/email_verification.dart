@@ -3,6 +3,7 @@ import 'package:ama/pages/login_signuppages/login_verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VerificationPage extends StatefulWidget {
@@ -102,32 +103,28 @@ class _VerificationPageState extends State<VerificationPage> {
                     SizedBox(height: 100),
                     GestureDetector(
                       onTap: () {
-                        Loader.show(
-                          context,
-                          isAppbarOverlay: false,
-                          isSafeAreaOverlay: false,
-                          isBottomBarOverlay: false,
-                          overlayFromBottom: 0,
-                          overlayColor: Colors.grey,
-                          overlayFromTop: 0,
-                          progressIndicator: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircularProgressIndicator(
-                                  backgroundColor: Colors.red),
-                              Text(
-                                "Verifying your code! Please wait....",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                    decoration: TextDecoration.none),
-                              )
-                            ],
-                          ),
-                          themeData: Theme.of(context).copyWith(
-                              colorScheme: ColorScheme.fromSwatch()
-                                  .copyWith(secondary: Colors.green)),
-                        );
+                        Loader.show(context,
+                            isAppbarOverlay: true,
+                            overlayFromTop: 100,
+                            progressIndicator: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                    child: SpinKitPulse(
+                                  color: Color.fromRGBO(185, 136, 95, 10),
+                                  size: 70.0,
+                                )),
+                                Text("Verifying your code",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 14,
+                                        color: Colors.black,
+                                        decoration: TextDecoration.none))
+                              ],
+                            ),
+                            themeData: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.fromSwatch()
+                                    .copyWith(secondary: Colors.black38)),
+                            overlayColor: Colors.grey);
 
                         Navigator.push(context,
                             MaterialPageRoute(builder: (_) => LoginVerify()));

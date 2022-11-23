@@ -1,6 +1,7 @@
 import 'package:ama/pages/login_signuppages/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,16 +42,17 @@ class _FinalOnboardingState extends State<FinalOnboarding> {
                     InkWell(
                       onTap: () {
                         Loader.show(context,
-                            isSafeAreaOverlay: false,
-                            progressIndicator: CircularProgressIndicator(
-                              color: Colors.black,
-                            ),
-                            isBottomBarOverlay: false,
-                            overlayFromBottom: 0,
+                            isAppbarOverlay: true,
+                            overlayFromTop: 100,
+                            progressIndicator: Center(
+                                child: SpinKitPulse(
+                              color: Color.fromRGBO(185, 136, 95, 10),
+                              size: 70.0,
+                            )),
                             themeData: Theme.of(context).copyWith(
                                 colorScheme: ColorScheme.fromSwatch()
                                     .copyWith(secondary: Colors.black38)),
-                            overlayColor: Color(0x99E8EAF6));
+                            overlayColor: Colors.grey);
 
                         print("you are navigating to the Login Page");
                         Navigator.push(context,
